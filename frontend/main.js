@@ -15,20 +15,29 @@ class GameScene extends Phaser.Scene{
         this.player
         this.cursor
         this.playerSpeed=speedDown+50;
+        this.target
     }
 
     preload(){
         this.load.image("background", "/assets/background.jpeg")
         this.load.image("worm", "/assets/wormsprite.png" )
+        this.load.image("wormfood", "/assets/worm.jpeg")
+
     }
     create(){
         this.add.image(0,0,"background").setOrigin(0,0)
-        this.player = this.physics.add.image(0, sizes.height-100, "worm").setOrigin(0, 0)
+        this.player = this.physics.add.image(0, sizes.height - 100, "worm").setOrigin(0, 0)
         this.player.setImmovable(true)
         this.player.body.allowGravity = false
 
         this.cursor=this.input.keyboard.createCursorKeys();
         this.player.setCollideWorldBounds(true)
+
+        this.target = this.physics.add
+            .image(0,0, "apple")
+            .setOrigin(0,0);
+
+        this.cursor = this.input.keyboard.createCursorKeys();
     }
     update(){
     const{ left, right } = this.cursor;
