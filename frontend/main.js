@@ -33,9 +33,8 @@ class GameScene extends Phaser.Scene{
         this.cursor=this.input.keyboard.createCursorKeys();
         this.player.setCollideWorldBounds(true)
 
-        this.target = this.physics.add
-            .image(0,0, "wormfood")
-            .setOrigin(0,0);
+        this.target = this.physics.add.image(0,0, "wormfood").setOrigin(0,0);
+        this.target.setMaxVelocity(0, speedDown);
 
         this.cursor = this.input.keyboard.createCursorKeys();
     }
