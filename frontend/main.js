@@ -34,23 +34,28 @@ class GameScene extends Phaser.Scene{
         this.player.setCollideWorldBounds(true)
 
         this.target = this.physics.add
-            .image(0,0, "apple")
+            .image(0,0, "wormfood")
             .setOrigin(0,0);
 
         this.cursor = this.input.keyboard.createCursorKeys();
     }
     update(){
-    const{ left, right } = this.cursor;
 
-    if (left.isDown) {
-        this.player.setVelocityX(this.playerSpeed);
-    }
-    else if (right.isDown) {
-            this.player.setVelocityY(this.playerSpeed);
+        if (this.target.y >= sizes.height) {
+            this.target.setY(0);
         }
-        else {
-            this.player.setVelocityX(0);
+
+        const{ left, right } = this.cursor;
+
+        if (left.isDown) {
+            this.player.setVelocityX(this.playerSpeed);
         }
+        else if (right.isDown) {
+                this.player.setVelocityY(this.playerSpeed);
+            }
+            else {
+                this.player.setVelocityX(0);
+            }
     }
 }
 
